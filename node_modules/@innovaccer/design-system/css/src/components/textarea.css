@@ -1,0 +1,57 @@
+/* Textarea */
+
+.Textarea {
+  min-height: var(--spacing-3);
+  width: 100%;
+  display: block;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--font-height);
+  font-size: var(--font-size);
+  box-sizing: border-box;
+  border-radius: var(--spacing-m);
+  border: var(--border);
+  color: var(--inverse);
+  padding: var(--spacing) var(--spacing-l);
+  resize: none;
+  cursor: auto; /* this ensures text cursor over text, and pointer cursor over scroll*/
+}
+
+.Textarea::placeholder {
+  color: var(--inverse-lighter);
+}
+
+.Textarea::-ms-clear {
+  display: none;
+}
+
+.Textarea:focus-within {
+  outline: none;
+  border: var(--spacing-xs) solid var(--primary);
+  box-shadow: var(--shadow-spread) var(--primary-shadow);
+}
+
+.Textarea:disabled {
+  color: var(--inverse-lightest);
+  background: var(--secondary-lightest);
+  border-color: var(--secondary-light);
+}
+
+.Textarea--readOnly {
+  pointer-events: none;
+  background: var(--secondary-lightest);
+  border-color: var(--secondary);
+}
+
+.Textarea--error {
+  border: var(--spacing-xs) solid var(--alert);
+}
+
+.Textarea--error:focus-within {
+  border: var(--spacing-xs) solid var(--alert);
+  box-shadow: var(--shadow-spread) var(--alert-shadow);
+}
+
+.Textarea--resize {
+  resize: both;
+}

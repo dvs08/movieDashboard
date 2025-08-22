@@ -1,0 +1,199 @@
+.Chip {
+  display: flex;
+  box-sizing: border-box;
+  border-radius: var(--spacing-l);
+  padding-right: var(--spacing);
+  padding-left: var(--spacing);
+  padding-top: var(--spacing-s);
+  padding-bottom: var(--spacing-s);
+  width: fit-content;
+  justify-content: space-between;
+  border-style: solid;
+  border-width: var(--spacing-xs);
+  align-items: center;
+  flex-direction: row;
+  cursor: default;
+  height: var(--spacing-xl);
+  transition: var(--duration--fast-01) var(--standard-productive-curve);
+}
+
+.Chip-wrapper {
+  display: inline-flex;
+  align-items: center;
+}
+
+.Chip-icon--left {
+  margin-right: var(--spacing-m);
+  display: flex;
+  align-items: center;
+}
+
+.Chip-icon--right {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  margin-left: var(--spacing-s);
+}
+
+.Chip--action {
+  background: var(--secondary-light);
+  border: 0px;
+  cursor: pointer;
+}
+
+.Chip--action:hover {
+  background: var(--secondary);
+}
+
+.Chip--action:focus-visible {
+  box-shadow: var(--shadow-spread) var(--secondary-shadow);
+  outline: none;
+}
+
+.Chip--action:active {
+  background: var(--secondary-dark);
+}
+
+.Chip-action--disabled {
+  background: var(--secondary-light);
+  opacity: var(--opacity-12);
+  border: 0px;
+  outline: none;
+  cursor: not-allowed;
+}
+
+.Chip--selection {
+  background: var(--shadow-0);
+  border-color: var(--stone);
+  cursor: pointer;
+}
+
+.Chip--selection:hover {
+  background: var(--secondary-lighter);
+  border-color: var(--secondary-dark);
+}
+
+.Chip--selection:focus-visible {
+  box-shadow: var(--shadow-spread) var(--secondary-shadow);
+  outline: none;
+}
+
+.Chip--selection:active {
+  background: var(--secondary-light);
+  border-color: var(--inverse-lightest);
+}
+
+.Chip-selection--disabled {
+  background: var(--white);
+  border-color: var(--secondary);
+  opacity: var(--opacity-12);
+  cursor: not-allowed;
+}
+
+.Chip-selection--selected {
+  background: color-mod(var(--primary-lightest) a(var(--opacity-12)));
+  border-color: var(--primary-lighter);
+}
+
+.Chip-selection--selected:hover {
+  background: color-mod(var(--primary-lighter) a(var(--opacity-12)));
+  border-color: var(--primary-light);
+}
+
+.Chip-selection--selected:focus-visible {
+  box-shadow: var(--shadow-spread) var(--primary-shadow);
+  outline: none;
+}
+
+.Chip-selection--selected:active {
+  background: var(--primary-lighter);
+  border-color: var(--primary-dark);
+}
+
+.Chip-selection--selected:active .Chip-icon,
+.Chip-selection--selected:active .Chip-text {
+  color: var(--primary-darker);
+}
+
+.Chip-text--truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline;
+  max-width: 100%;
+}
+
+.Chip-selection--selectedDisabled {
+  background: color-mod(var(--primary-lightest) a(var(--opacity-12)));
+  border-color: var(--primary-lighter);
+}
+
+.Chip--input {
+  background: var(--secondary-light);
+  font-weight: var(--font-weight-normal);
+  border: 0px;
+}
+
+.Chip--input:hover {
+  background: var(--secondary);
+}
+
+.Chip--input:focus-visible,
+.Chip--input:focus {
+  box-shadow: var(--shadow-spread) var(--secondary-shadow);
+  outline: none;
+}
+
+.Chip--input:active {
+  background: var(--secondary-dark);
+}
+
+.Chip-input--disabled {
+  background: var(--secondary-lighter);
+  opacity: var(--opacity-12);
+  cursor: not-allowed;
+  border: 0px;
+}
+
+.Chip-icon--right:focus-visible {
+  outline: var(--spacing-s) solid var(--secondary-shadow);
+}
+
+.Chip-icon--right:hover {
+  background-color: var(--secondary);
+}
+
+.Chip-icon--right:active {
+  background-color: var(--secondary-dark);
+}
+
+.Chip-icon-disabled--right {
+  pointer-events: none;
+}
+
+.Chip-icon--selected {
+  border-radius: 10px;
+}
+
+.Chip-icon--selected:focus-visible {
+  outline: var(--spacing-s) solid var(--primary-shadow);
+}
+
+.Chip-icon--selected:hover {
+  background-color: var(--primary-lighter);
+}
+
+.Chip-icon--selected:active {
+  background-color: var(--primary-light);
+}
+
+.Chip-selection--disabled:focus-visible,
+.Chip-icon-disabled--right:focus-visible,
+.Chip-selection--selectedDisabled:focus-visible,
+.Chip-input--disabled:focus-visible {
+  outline: none;
+}
+
+.Chip-icon--clear {
+  padding-right: var(--spacing-s);
+}

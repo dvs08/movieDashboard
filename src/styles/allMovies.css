@@ -1,0 +1,135 @@
+
+body{
+    font-family: 'Roboto';
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: #0d6efd;
+    text-decoration: underline;
+}
+.container-fluid {
+  
+    /* width: auto; */
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-3 {
+   
+    flex: 0 0 25%;   /* Fixed 25% of the row */
+    max-width: 25%;  /* Prevents growing */
+    padding: 10px;   /* spacing */
+    box-sizing: border-box;
+    
+
+}
+
+.listing-item-style {
+    background-color: #212121;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    border-radius: 5px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    width: 100%; /* Set width for background */
+    max-width: 435px;
+    height: 300px; /* Set height for background */
+    margin: auto; /* Center the item within the column */
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.listing-item-style img {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Ensures the image covers the area */
+}
+
+.listing__explore{
+    cursor: pointer;
+}
+
+.rate {
+    font-size: 0.75rem;
+    background: rgba(11, 26, 42, 0.95);
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    top: -12px;
+    left: -2px;
+}
+
+.listing-item-style h6 {
+    font-size: 0.875rem; /*14px*/
+    margin-top: 5px;
+    margin-left: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.listing-item-style .year {
+    display: flex;
+    font-size: 0.75rem; /* 12px */
+    color: #ffffff;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+/* Additional styles for the MenuBar and Footer */
+.content {
+    padding: 15px;
+    background-color: #333;
+    color: white;
+}
+
+.home_link {
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.home_link:hover {
+    text-decoration: underline;
+}
+
+/*Pagination*/
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.page-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.page-button:hover {
+    background-color: #0056b3;
+}
+
+.page-button.active {
+    background-color: #0056b3;
+    font-weight: bold;
+}
+
+.movie-info{
+    cursor: pointer;
+}
+

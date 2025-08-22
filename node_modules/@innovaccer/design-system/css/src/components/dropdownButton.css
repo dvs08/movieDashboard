@@ -1,0 +1,82 @@
+.DropdownButton {
+  width: 100%;
+  justify-content: space-between;
+  padding-top: unset;
+  padding-bottom: unset;
+  background: var(--secondary-light);
+  color: var(--text);
+  transition: var(--duration--fast-01) var(--standard-productive-curve);
+}
+
+.DropdownButton-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  align-items: center;
+}
+
+.DropdownButton-text {
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.DropdownButton--tiny {
+  height: var(--spacing-xl);
+  padding-right: var(--spacing);
+  padding-left: var(--spacing);
+}
+
+.DropdownButton--regular {
+  height: var(--spacing-3);
+  padding-right: var(--spacing);
+  padding-left: var(--spacing-l);
+}
+
+.DropdownButton--tinySquare {
+  padding-left: var(--spacing-m);
+  padding-right: var(--spacing-m);
+}
+
+.DropdownButton--regularSquare {
+  padding-left: var(--spacing);
+  padding-right: var(--spacing);
+}
+
+.DropdownButton--placeholder {
+  color: var(--text-subtle);
+}
+
+.DropdownButton:hover {
+  background: var(--secondary);
+  color: var(--text);
+}
+
+.DropdownButton:focus {
+  background-color: var(--secondary-light);
+  box-shadow: var(--shadow-spread) var(--secondary-shadow);
+}
+
+.DropdownButton:active,
+.DropdownButton--open {
+  background-color: var(--secondary-dark) !important;
+  color: var(--text) !important;
+  animation-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
+  animation-duration: 120ms;
+}
+
+.DropdownButton:disabled {
+  background: var(--secondary-lighter);
+  color: var(--text-disabled);
+  pointer-events: none;
+}
+
+.DropdownButton--icon {
+  padding-left: var(--spacing);
+}
+
+.DropdownButton--error {
+  border: var(--spacing-xs) solid var(--alert);
+}

@@ -1,0 +1,59 @@
+.upper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.carousel-form {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden; 
+}
+
+.carousel {
+  flex: 1;
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-container {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 12px;
+  min-width: 100%; 
+}
+
+.carousel-image {
+  width: 200px;   
+  height: 200px;
+  border-radius: 20px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  background-color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.carousel-button.left {
+  left: 10px;
+}
+
+.carousel-button.right {
+  right: 10px;
+}
+
+.carousel-button:hover {
+  background-color: #f0f0f0;
+}

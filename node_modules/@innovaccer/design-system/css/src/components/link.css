@@ -1,0 +1,69 @@
+.Link {
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  transition: var(--duration--fast-01) var(--standard-productive-curve);
+  box-sizing: border-box;
+}
+
+.Link:focus-visible {
+  outline: none;
+}
+
+.Link--regular {
+  font-size: var(--font-size);
+  height: var(--font-height);
+}
+
+.Link--tiny {
+  font-size: var(--font-size-s);
+  height: var(--font-height-s);
+  line-height: var(--font-height-s);
+}
+
+.Link--default {
+  color: var(--text-link);
+}
+
+.Link--subtle {
+  color: var(--inverse-lighter);
+}
+
+.Link--default:hover {
+  border-bottom: var(--spacing-xs) solid var(--primary-dark);
+  color: var(--primary-dark);
+}
+
+.Link--subtle:hover {
+  border-bottom: var(--spacing-xs) solid var(--inverse-light);
+  color: var(--inverse-light);
+}
+
+.Link--default:active {
+  color: var(--primary-darker);
+  border: none;
+}
+
+.Link--subtle:active {
+  color: var(--inverse);
+  border: none;
+}
+
+.Link--default:focus {
+  box-shadow: var(--shadow-spread) var(--primary-shadow);
+  border-radius: var(--spacing-m);
+}
+
+.Link--subtle:focus {
+  box-shadow: var(--shadow-spread) var(--secondary-shadow);
+  border-radius: var(--spacing-m);
+}
+
+.Link--default-disabled {
+  color: var(--primary-lighter);
+  pointer-events: none;
+}
+
+.Link--subtle-disabled {
+  color: var(--inverse-lightest);
+  pointer-events: none;
+}
