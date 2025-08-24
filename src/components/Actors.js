@@ -64,16 +64,16 @@ const Actors = () => {
 
     return(
         <div>
-            <MenuBar/>
-              <section>
+            {/* <MenuBar/> */}
+              {/* <section>
                 <div className="content">
                     <span>
                         <a className="home_link" onClick={() => navigate('/')}>HOME</a>
                     </span>
                     <span style={{ fontSize: "30px", marginLeft: "5px" }}>|</span>
-                    <span style={{ marginLeft: "8px" }}>{"ACTOR"}</span>
+                    <span style={{ marginLeft: "8px" }}>{actor.name}</span>
                 </div>
-            </section>
+            </section> */}
 
             {loading ? (
                     
@@ -87,13 +87,17 @@ const Actors = () => {
                 <div className="actorDesc">
                     <Heading size="xl"style={{textAlign:"center", marginBottom:"30px"}}>{actor.name}</Heading>
 
-                    <Paragraph>{actor.biography}</Paragraph>
+                    {actor.biography ? (
+                            <Paragraph>{actor.biography}</Paragraph>
+                    ):(
+                        <h5>No Information Available</h5>
+                    )}
+                    
 
                 </div>
             </div>
                
             )}
-        <Footer/>
         </div>
     );
 }

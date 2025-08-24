@@ -1,7 +1,9 @@
-body {
-    margin: 0;
-    padding: 0;
-    /* all: unset; */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /*Backdrop*/
@@ -30,6 +32,11 @@ body {
     padding: 2rem; /* Add some padding for spacing */
     color: white; /* Text color */
     z-index: 2; /* Ensure text is above the overlay */
+
+    max-width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
 }
 
 .image {
@@ -57,10 +64,14 @@ body {
 
 .desc {
     margin-top: 2.5rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 400;
     color: #ffffff;
     /* font-family: Dosis, sans-serif; */
+    line-height: 1.8rem;
+    max-height: 12rem;
+    overflow: auto;
+    text-overflow: ellipsis;
 }
 
 /* Responsive Styles */
@@ -302,7 +313,7 @@ i{
 .overview-container {
     display: flex;
     align-items: center; /* Align items at the start */
-    justify-content: flex-start;
+    justify-content: center;
     margin: 40px 0; /* Space above and below */
     /* border: 2px solid black; */
     width: 1260px;
@@ -318,7 +329,7 @@ i{
 
 .details ul {
     list-style-type: none; /* Remove bullet points */
-    padding-left: 200px;
+    padding-left: 35px;
 }
 
 .details li {
@@ -329,11 +340,16 @@ i{
 .details strong {
     font-weight: bold; /* Ensure the first word is bold */
 }
+.poster{
+    
+    /* margin-left: auto; */
+}
 
 .poster img {
-    width: 350px; /* Set width */
-    height: 500px; /* Set height */
+    width: auto; /* Set width */
+    height: 420px; /* Set height */
     object-fit: cover; /* Maintain aspect ratio */
+   
 }
 
 
@@ -346,7 +362,7 @@ i{
     border-radius: 15px; 
     padding: 20px;
     margin: 20px; 
-    width: 1260px; 
+    width: auto; 
     height: auto;
     overflow: hidden;
     
@@ -362,14 +378,14 @@ i{
 .actors{
 
     display: flex;
-    border: 2px solid black;
+    /* border: 2px solid black; */
     justify-content: center;
 }
 
 .actorImg{
 
-    height: 556px;
-    width: 370px;
+    height: 200px;
+    width: auto;
     margin: 30px 120px 30px 0;
 }
 .actorDesc{

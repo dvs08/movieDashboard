@@ -99,7 +99,7 @@ const MovieImbd = () => {
 
   return (
     <div>
-        <MenuListTab/>
+        {/* <MenuListTab/> */}
         <BackDrop/>
         <SearchMovie/>
         {loading ? (
@@ -108,39 +108,39 @@ const MovieImbd = () => {
         ):(
 
           movieTypes.map((type,index) => {
-            let images, ids;
+            let images, ids, title;
             if(type === 'Trending Movies') {
               images = trend.map(movie => movie.backdrop);
               ids = trend.map(movie => movie.movieId);
+              title = trend.map(movie => movie.title);
             }
             else if(type === 'Top-Rated Movies') {
               images = toprate.map(movie => movie.backdrop);
               ids = toprate.map(movie => movie.movieId);
+              title = toprate.map(movie => movie.title);
   
             }
             else if(type === 'Popular Movies') {
               images = popular.map(movie => movie.backdrop);
               ids = popular.map(movie => movie.movieId);
-  
+              title = popular.map(movie => movie.title);
   
             } else if(type === 'Upcoming Movies'){
               images = upcoming.map(movie => movie.backdrop);
               ids = upcoming.map(map => map.movieId);
+              title = upcoming.map(movie => movie.title);
             }
-  
             return(
                 <MovieType 
                   key ={index} 
                   movieType={type} 
                   movieImages={images}
                   movieIds = {ids}
-                  
+                  movieTitle = {title}
                   />
             );
           })
-        )}
-        <Footer/>
-        
+        )}     
     </div>
   );
 };

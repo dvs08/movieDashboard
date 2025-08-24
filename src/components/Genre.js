@@ -7,6 +7,7 @@ import MenuBar from './MenuBar';
 import Footer from './Footer';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Atom } from 'react-loading-indicators';
+import BackButton from './BackButton';
 
 const ITEMS_PER_PAGE = 8;
 
@@ -44,6 +45,8 @@ const GenreAll = () => {
         fetchData();
     }, [idTab]); 
 
+    
+
     const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
     const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
     const currentItems = currData.slice(indexOfFirstItem, indexOfLastItem);
@@ -53,18 +56,19 @@ const GenreAll = () => {
         setCurrentPage(pageNumber);
     };
 
+    console.log("CHECK MOVIE NAME", currData.title );
     return (
         <div>
-            <MenuBar />
-            <section>
+            {/* <MenuBar /> */}
+            {/* <section>
                 <div className="content">
                     <span>
-                        <a className="home_link" onClick={() => navigate('/')}>HOME</a>
+                        <a className="home_link" onClick={() => navigate('/')}>Hello</a>
                     </span>
                     <span style={{ fontSize: "30px", marginLeft: "5px" }}>|</span>
                     <span style={{ marginLeft: "8px" }}>{menuname.charAt(0).toUpperCase() + menuname.slice(1)}</span>
                 </div>
-            </section>
+            </section> */}
             <div className="container-fluid">
                 <div className="row">
                     {loading ? (
@@ -72,7 +76,7 @@ const GenreAll = () => {
                     ) : (
                         currentItems.map(movie => (
                             <div key={movie.id} className="col-md-3">
-                                <div className="listing-item-style" onClick={() => navigate(`/movie/${movie.id}`)}>
+                                <div className="listing-item-style" onClick={() => navigate(`/movie/${movie.id}`,{ state: { title: movie.title }})}>
                                     <img src={movie.backdrop} alt={movie.title} />
                                     <div className="movie-info">
                                         <p className="rate">
@@ -96,7 +100,6 @@ const GenreAll = () => {
                     onPageChange={handlePageChange}
                 />
             </div>
-            <Footer />
         </div>
     );
 }

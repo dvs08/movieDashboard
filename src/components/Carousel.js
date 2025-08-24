@@ -3,7 +3,7 @@ import '../styles/Carousel.css';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@innovaccer/design-system';
 
-const Carousel = ({ images, movieIds }) => {
+const Carousel = ({ images, movieIds, movieNames }) => {
     const navigate = useNavigate();
 
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -41,7 +41,7 @@ const Carousel = ({ images, movieIds }) => {
             <div className="carousel">
                 <div className="carousel-container" style={{ transform: `translateX(-${(currentIndex * 100) / itemsToShow}%)` }}>
                     {images.map((image, index) => (
-                        <div key={index} onClick={() => navigate(`/movie/${movieIds[index]}`)}>
+                        <div key={index} onClick={() => navigate(`/movie/${movieIds[index]}`, { state: { name: movieNames[index] } })}>
                             <img src={image} alt={`carousel ${index}`} className="carousel-image" />
                         </div>
                     ))}

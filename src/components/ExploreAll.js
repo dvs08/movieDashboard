@@ -11,6 +11,7 @@ import MenuBar from './MenuBar';
 import Footer from './Footer';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Atom } from 'react-loading-indicators';
+import BackButton from './BackButton';
 
 const ITEMS_PER_PAGE = 8;
 
@@ -78,8 +79,8 @@ const ExploreAll = () => {
 
     return (
         <div>
-            <MenuBar />
-            <section>
+            {/* <MenuBar /> */}
+            {/* <section>
                 <div className="content">
                     <span>
                         <a className="home_link" onClick={() => navigate('/')}>HOME</a>
@@ -87,7 +88,7 @@ const ExploreAll = () => {
                     <span style={{ fontSize: "30px", marginLeft: "5px" }}>|</span>
                     <span style={{ marginLeft: "8px" }}>{movieType.replace('-', ' ').toUpperCase()}</span>
                 </div>
-            </section>
+            </section> */}
             <div className="container-fluid">
                 <div className="row">
                     {loading ? ( // Show loader if loading
@@ -95,7 +96,7 @@ const ExploreAll = () => {
                     ) : (
                         currentItems.map((movie, index) => (
                             <div key={index} className="col-md-3">
-                                <div className="listing-item-style" onClick={() => navigate(`/movie/${movie.id}`)}>
+                                <div className="listing-item-style" onClick={() => navigate(`/movie/${movie.id}`, { state: { title: movie.title }})}>
                                     <img src={movie.backdrop} alt={movie.title} />
                                     <div className="movie-info">
                                         <p className="rate">
@@ -119,7 +120,6 @@ const ExploreAll = () => {
                     onPageChange={handlePageChange}
                 />
             </div>
-            <Footer />
         </div>
     );
 }

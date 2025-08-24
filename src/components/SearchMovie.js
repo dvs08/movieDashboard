@@ -14,7 +14,7 @@ const SearchMovie = () => {
         if(e.key === 'Enter'){
             
             
-            navigate(`/search/${searchItem.trim()}`);
+            navigate(`/search/${searchItem.trim()}`, {state: { name: searchItem.trim() }});
         }
 
         // console.log("Event e : ",e.key);
@@ -44,8 +44,6 @@ const SearchMovie = () => {
                     name="input" 
                     placeholder="Search"  
                     onChange={(e) => setSearchItem(e.target.value)}
-                    
-                   
                  >
                  </Input>
             </div>

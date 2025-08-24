@@ -13,6 +13,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import CustomModal from './CustomModal';
 import { Atom } from 'react-loading-indicators';
 import "@innovaccer/design-system/css";
+import BackButton from './BackButton';
 
 const MoviePage = () => {
     const { id } = useParams();
@@ -134,13 +135,19 @@ const MoviePage = () => {
     const closeModal = () => {
         setModalOpen(false);
     };
+    const handleBack = () => {
+        navigate(-1); // Go back in history
+    };
 
-    console.log("Cast[] length: ", cast.length);
-    console.log("RecMov[]: ", recomMovie.length);
+    //TEST
+     const actrnm = cast.map(actor => ({
+                    name: actor.name
+                }));
+    console.log("ACTOR LIST", actrnm);
     return (
         <div>
-            <MenuBar />
-            <section>
+            {/* <MenuBar /> */}
+            {/* <section>
                 <div className="content">
                     <span>
                         <a className="home_link" onClick={() => navigate('/')}>HOME</a>
@@ -148,7 +155,8 @@ const MoviePage = () => {
                     <span style={{ fontSize: "30px", marginLeft: "5px" }}>|</span>
                     <span style={{ marginLeft: "8px" }}>{movieDetails.title}</span>
                 </div>
-            </section>
+            </section> */}
+          
             {loading ? ( 
                 
                 <div className='indic'> <Atom color="#3176cc" size="large" text="" textColor="#b70eb7"/></div>
@@ -200,7 +208,7 @@ const MoviePage = () => {
                         {
                             cast.length > 0 ? (
 
-                                <CarouselActor images={cast.map(actor => actor.profile)} castIds={cast.map(cas => cas.id)} />
+                                <CarouselActor images={cast.map(actor => actor.profile)} castIds={cast.map(cas => cas.id)}  castNames={cast.map(actor => actor.name)} />
 
                             ) : (
                                 <h2>No Cast Available</h2>
@@ -208,7 +216,7 @@ const MoviePage = () => {
                         }
                        
                         <Heading size="xxl" style={{marginTop: "50px"}} className="text-center">Recommended Movies</Heading>
-                        <Carousel images={recomMovie.map(rec => rec.poster)} movieIds={recomMovie.map(rec => rec.id)} />
+                        <Carousel images={recomMovie.map(rec => rec.poster)} movieIds={recomMovie.map(rec => rec.id)} movieNames={recomMovie.map(movie => movie.name)} />
 
                         <Heading size="xxl" style={{marginTop: "50px"}} className="text-center">Reviews</Heading>
                         {
@@ -226,7 +234,6 @@ const MoviePage = () => {
                             )
                         }
                     </div>
-                    <Footer />
                     <CustomModal isOpen={modalOpen} onClose={closeModal} videoUrl={trailerUrl} />
                 </div>
             )}

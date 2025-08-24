@@ -1,28 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/movie.css';
-import { HorizontalNav } from '@innovaccer/design-system';
+import { HorizontalNav, Button, Icon } from '@innovaccer/design-system';
 import "@innovaccer/design-system/css";
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
-
+import { useNavigate, useParams, useLocation} from 'react-router-dom';
+import BackButton from './BackButton';
 //Re-rendering happens on unmout when Nagivation changes. in setState only state updates.
 //Read about Lifecycle and useState rendering.
 
 const Menubar = () => {
 
+  const location = useLocation();
   const navigate = useNavigate();
   const [data, setData] = useState([]);
-  const [active, setActive] = useState();
-
-  // console.log("Before Ac:", active);
+  const [active, setActive] = useState({ name: 'home', label: 'Home' });
   const {menuname } = useParams();
 
-
-  useEffect(()=>{
-    setActive( {name: menuname || 'home'})
-
-  },[menuname])
-
+  const titleFromState = location.state?.title || location.state?.name || location.state?.actorName;
 
   const fetchGenres = async () => {
     try {
@@ -38,13 +32,6 @@ const Menubar = () => {
       // const homeTab = {name: 'home', label: 'Home', id:'home'};
 
       setData([{name: 'home', label: 'Home', id:'home'}, ...genres]);
-      
-
-      console.log("Genres: " , genres);
-      // setData(genres);
-     
-      // setActive(genres[0]); 
-
 
     } catch (error) {
       console.error('Error fetching genres:', error);
@@ -55,25 +42,56 @@ const Menubar = () => {
     fetchGenres();
   }, []);
 
+  useEffect(() => {
+    const path = location.pathname;
 
-  const onClickHandler = ({name, ...rest}) => {
-    console.log('menu-clicked: ', name);
-    setActive({name});
-    console.log("menu name Set",name);
-    if(name === 'home'){
+    if (path === '/') {
+      setActive({ name: 'home', label: 'Home' });
+    } else if (path.startsWith('/genres/')) {
+      const parts = path.split('/');
+      const genreName = parts[2];
+      const matchedTab = data.find((item) => item.name === genreName);
+      setActive(matchedTab || { name: genreName, label: genreName });
+    } else if (path.startsWith('/movie/')) {
+      // Use title from state if available
+      setActive({
+        name: titleFromState || 'Movie',
+        label: titleFromState || 'Movie'
+      });
+    } else if (path.startsWith('/cast/')) {
+      // Use actor name from state if available
+      setActive({
+        name: titleFromState || 'Actor',
+        label: titleFromState || 'Actor'
+      });
+    }
+      else if (path.startsWith('/explore/')) {
+        const type = location.state?.name || decodeURIComponent(path.split('/')[2]);
+        setActive({ name: type, label: type });
+    }
+      else if (path.startsWith('/search/')) {
+        const searchQuery = location.state?.name || decodeURIComponent(path.split('/')[2]);
+        setActive({ name: searchQuery, label: searchQuery});
+    }
+  }, [location.pathname, data, titleFromState]);
+
+  const onClickHandler = ({ name, ...rest }) => {
+    setActive({ name, label: rest.label || name });
+    if (name === 'home') {
       navigate('/');
     } else {
-    navigate(`/genres/${name}/${rest.id}`);
+      navigate(`/genres/${name}/${rest.id}`);
     }
   };
 
-
-  // console.log("Data.id: ", active.id);
-  console.log("Data: ", data);
-  console.log("Active:", active);
+  const handleBack = () => {
+    navigate(-1);
+  };
 
   return (
+    <div>
     <div className="d-flex justify-content-end py-6 bg-secondary-lightest navBackground" id='navBackground'>
+
       <HorizontalNav
         className="w-100 justify-content-end"
         menus={data}
@@ -82,6 +100,11 @@ const Menubar = () => {
         
       />
     </div>
+        {active.name !== 'home' && (
+        <BackButton details={active.label} onBack={handleBack} />
+      )}
+    </div>
+    
   );
 };
 
